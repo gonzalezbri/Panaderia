@@ -34,18 +34,38 @@ export default function Slideshow() {
     };
   }, [handleLeftConstraint]);
 
+  // Update the drag constraints on resize.
+  useEffect(() => {
+    const updateDragConstraints = () => {
+      carousel.current.dragConstraints = {
+        left: -21150,
+        right: carouselWidth,
+      };
+    };
+
+    updateDragConstraints();
+
+    window.addEventListener('resize', updateDragConstraints);
+
+    return () => {
+      window.removeEventListener('resize', updateDragConstraints);
+    };
+  }, [carouselWidth]);
+
   return (
-    <div>
+    <div
+      id="carousel-container"
+      className="carousel"
+    >
       <motion.div
         key={containerKey}
-        id="carousel-container"
-        className="carousel"
         whileTap={{ cursor: 'grabbing' }}
       >
         <motion.div
           drag="x"
-          dragConstraints={{ right: carouselWidth }}
+          dragConstraints={{ left: -21150, right: carouselWidth }}
           className="inner-carousel"
+          ref={carousel}
         >
           {imageOrder.map((image) => (
             <motion.div className="item" key={image}>
