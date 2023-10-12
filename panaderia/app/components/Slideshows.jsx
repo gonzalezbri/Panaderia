@@ -35,11 +35,12 @@ export default function Slideshow() {
   }, [handleLeftConstraint]);
 
   return (
-    <div>
+    <div
+    id="carousel-container"
+      className="carousel"
+    >
       <motion.div
         key={containerKey}
-        id="carousel-container"
-        className="carousel"
         whileTap={{ cursor: 'grabbing' }}
       >
         <motion.div
