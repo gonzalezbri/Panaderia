@@ -57,3 +57,26 @@ body {
   overflow: hidden;
   max-width: 100%;
 }
+
+
+/*Seasonal menu styling
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 4%;
+    margin: 2% 0;
+    overflow: flex;
+  }
+}
+.grid-item {
+  width: 100%;
+}
+
+.grid-item img {
+  object-fit: cover;
+}
+
+.grid-item p {
+  font-size: 16px;
+  text-align: center;
+}*/
