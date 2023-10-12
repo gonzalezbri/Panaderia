@@ -25,8 +25,32 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
+/* Navbar CSS*/
 .custom-navbar {
   background-color: rgba(255, 255, 255, 0.4); /* Adjust the opacity as needed */
   backdrop-filter: blur(10px); /* Optional: Apply a blur effect to the background */
   }
+
+/* Carousel CSS*/
+  .item {
+    min-height: 40rem; /* Add a maximum height to prevent images from getting too large */
+    min-width: 30rem; /* Add a maximum width to prevent images from getting too large */
+    padding: 40px;
+  }
+
+
+.item img{
+  height: 100%;
+  width: 100%;
+  border-radius: 2rem;
+  pointer-events: none;
+}
+
+.inner-carousel {
+  display: flex;
+}
+
+.carousel {
+  display: flex;
+  overflow: hidden;
+}

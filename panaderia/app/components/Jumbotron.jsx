@@ -1,11 +1,35 @@
-import React from "react";
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { useAnimatedState } from 'framer-motion';
 import Link from "next/link";
 import bg1 from './bg1.jpg';
 import Image from "next/image";
+import { motion } from 'framer-motion';
+
+const jumbotronVariants = {
+    initial: {
+        opacity: 0,
+      y: 20, // Move it down slightly
+    },
+    animate: {
+        opacity: 1,
+      y: 0, // Move it back to its original position
+        transition: {
+        duration: 1, // Animation duration in seconds
+        ease: 'easeInOut', // Animation easing function
+        },
+    },
+    };
 
 const Jumbotron = () => {
     return (
-    <section className="relative bg-gray-700 bg-blend-multiply">
+        <motion.section
+        className="relative bg-gray-700 bg-blend-multiply"
+        initial="initial" 
+        animate="animate" 
+        variants={jumbotronVariants}
+        >
         <Image
         src={bg1}
         alt="Background Image"
@@ -30,7 +54,7 @@ const Jumbotron = () => {
         </Link>
         </div>
         </div>
-    </section>
+        </motion.section>
     );
 };
 
