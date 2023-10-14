@@ -1,40 +1,46 @@
 'use client';
 import { Navbar } from "flowbite-react";
+import { motion } from 'framer-motion';
 
-
-export default function DefaultNavbar() {
+const DefaultNavbar = () => {
+    const linkStyle = {
+        color: 'white'
+    };
     return (
-            <Navbar
+        <Navbar
             fixed={true}
             fluid={true}
             rounded={true}
-            className="custom-navbar"
-            >
-            <Navbar.Brand href="/">
-                <img
-                src="https://flowbite.com/docs/images/logo.svg"
-                className="mr-3 h-6 sm:h-9"
-                alt=""
-                />
-                <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                Panaderia
-                </span>
-            </Navbar.Brand>
+            className="custom-navbar">
+            <motion.div whileHover={{ scale: 1.1 }}>
+                <Navbar.Brand href="/">
+                    <img
+                        src="https://flowbite.com/docs/images/logo.svg"
+                        className="mr-3 h-9 sm:h-9"
+                        alt=""
+                    />
+                    <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
+                        Panaderia
+                    </span>
+                </Navbar.Brand>
+            </motion.div>
             <Navbar.Toggle />
             <Navbar.Collapse>
-                <Navbar.Link
-                href="/"
-                active={true}>
-                Home
+                <Navbar.Link href="/" className="text-white text-xl">
+                    <motion.div whileHover={{ scale: 1.3, color: 'black' }} style={linkStyle}>Home</motion.div>
                 </Navbar.Link>
-                <Navbar.Link href="/seasonal-menu">
-                Seasonal Menu
+                <Navbar.Link href="/seasonal-menu" className="text-white text-xl">
+                    <motion.div whileHover={{ scale: 1.2, color: 'black' }} style={linkStyle}>Seasonal Menu</motion.div>
                 </Navbar.Link>
-                <Navbar.Link href="/request-a-quote">
-                Request a quote
+                <Navbar.Link href="/request-a-quote" className="text-white text-xl">
+                    <motion.div whileHover={{ scale: 1.2, color: 'black' }} style={linkStyle}>Request a quote</motion.div>
                 </Navbar.Link>
-                <Navbar.Link href="/about">
-                About
+                <Navbar.Link href="/about" className="text-white text-xl">
+                    <motion.div whileHover={{ scale: 1.3, color: 'black' }} style={linkStyle}>About</motion.div>
                 </Navbar.Link>
             </Navbar.Collapse>
-            </Navbar>)};
+        </Navbar>
+    );
+};
+
+export default DefaultNavbar;

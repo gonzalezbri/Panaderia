@@ -74,6 +74,9 @@ export default function CardGrid() {
                                     <p className="font-normal text-gray-700 dark:text-gray-400">
                                         Price Per Dozen:
                                     </p>
+                                    <p className="font-normal text-gray-700 dark:text-gray-400">
+                                        Description:
+                                    </p>
                                 </div>
                             </motion.div>
                         ))}
