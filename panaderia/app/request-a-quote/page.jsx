@@ -1,11 +1,13 @@
 'use client';
 
-import Link from "next/link";
 import raq from './raq.jpg';
 import dti from './dti.jpg'
 import Image from "next/image";
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
+import { Label, TextInput,Textarea, Button } from 'flowbite-react';
+import { HiMail } from 'react-icons/hi';
+
 
 const jumbotronVariants = {
   initial: {
@@ -48,6 +50,25 @@ const jumbotronVariants = {
     );
   };
 
+
+  const overlayStyles = {
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    padding: '20px',
+    borderRadius: '10px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    width: '100%',
+    maxWidth: '400px', 
+    margin: '0 auto', 
+    };
+
+    const formStyles = {
+      width: '100%', 
+      };
+
 export default function requestquote() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
     return (
@@ -74,9 +95,44 @@ export default function requestquote() {
         <p className="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nulla sunt quis eveniet, assumenda itaque ipsam ducimus voluptatem esse. Beatae eaque corporis facilis ad odit? Reiciendis doloribus nemo mollitia sapiente.
         </p>
-        <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-        
-        </div>
+            <div style={overlayStyles} className="max-w-md">
+              <form className="flex flex-col gap-4" style={formStyles} action="">
+              <div className="mb-2 block">
+                <Label
+                  className='text-xl tracking-normal font-bold text-white'
+                  htmlFor="email4"
+                  value="Your email"
+                />
+                </div>
+                <TextInput
+                icon={HiMail}
+                id="email4"
+                placeholder="Your Email Here"
+                required
+                rightIcon={HiMail}
+                type="email"
+                />
+                <div
+                className="max-w-md"
+                id="textarea"
+                >
+                <div className="mb-2 block">
+                <Label
+                className='text-xl tracking-normal font-bold text-white'
+                htmlFor="comment"
+                value="Your message"
+                />
+                </div>
+                <Textarea
+                  id="comment"
+                  placeholder="Tell me more"
+                  required
+                  rows={4}
+                />
+              </div>
+              <Button color="gray" className="inline-flex justify-center items-center py-3 px-5 text-2xl font-medium text-center text-white rounded-lg bg-transparent border border-white hover:bg-white hover:text-black hover:border-white transform scale-105 hover:scale-100 transition duration-200 ease-in-out">Submit</Button>
+              </form>
+            </div>
         </div>
         </motion.section>
     );
