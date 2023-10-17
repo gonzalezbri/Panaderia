@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import seas from './seas.jpg';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+
 
 export default function CardGrid() {
     const cards = [
@@ -44,12 +46,25 @@ export default function CardGrid() {
         },
     ];
 
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 640);
+        };
+        handleResize(); // check initially
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-14">
             <h1 className="text-4xl font-extrabold">Seasonal Menu</h1>
 
             <div className="container mx-auto py-6">
-                <div className="grid grid-cols-3 gap-4">
+                <div className={`grid ${isMobile ? 'grid-cols-1' : 'grid-cols-3'} gap-4`}>
                     <AnimatePresence>
                         {cards.map((card) => (
                             <motion.div
