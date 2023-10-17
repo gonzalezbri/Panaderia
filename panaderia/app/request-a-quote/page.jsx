@@ -93,13 +93,13 @@ export default function requestquote() {
             Request a Quote
         </h1>
         <p className="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nulla sunt quis eveniet, assumenda itaque ipsam ducimus voluptatem esse. Beatae eaque corporis facilis ad odit? Reiciendis doloribus nemo mollitia sapiente.
+        To request a quote for a custom cake, please follow the steps below. First, provide your email address in the designated box. Next, describe your desired custom cake, including any specific design, flavor, and size preferences in the text box provided. Once you have submitted the form, I will promptly review your request and get back to you with a personalized quote.
         </p>
             <div style={overlayStyles} className="max-w-md">
               <form className="flex flex-col gap-4" style={formStyles} action="">
               <div className="mb-2 block">
                 <Label
-                  className='text-xl tracking-normal font-bold text-white'
+                  className='text-xl tracking-normal font-normal text-white'
                   htmlFor="email4"
                   value="Your email"
                 />
@@ -118,14 +118,14 @@ export default function requestquote() {
                 >
                 <div className="mb-2 block">
                 <Label
-                className='text-xl tracking-normal font-bold text-white'
+                className='text-xl tracking-normal font-normal text-white'
                 htmlFor="comment"
                 value="Your message"
                 />
                 </div>
                 <Textarea
                   id="comment"
-                  placeholder="Tell me more"
+                  placeholder="Your Message Here!"
                   required
                   rows={4}
                 />

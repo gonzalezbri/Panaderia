@@ -8,7 +8,7 @@ const DefaultNavbar = () => {
     };
     return (
         <Navbar
-            fixed={true}
+            fixed="true"
             fluid={true}
             rounded={true}
             className="custom-navbar">
