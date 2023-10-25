@@ -13,8 +13,12 @@ export default function BreadList() {
     </div>
     );
 
+    const bgStyles = {
+        backgroundColor: 'rgba(0, 0, 0, 0.3)'
+    }
+
         return (
-            <div className="p-4 border border-slate-500 my-3 flex justify-between items-center">
+            <div style={bgStyles} className="p-4 border border-slate-500 my-3 flex justify-between items-center">
                 <div className="w-3/4 p-8">
                     <div className="flex flex-col items-start">
                     <h2 className="font-bold text-2xl mb-2">Bread Title</h2>

@@ -110,7 +110,7 @@ export default function requestquote() {
               <Label
                 className='text-xl tracking-normal font-normal text-white'
                 htmlFor="email4"
-                value="Your email"
+                value="Your Email"
               />
             </div>
             <TextInput
@@ -126,12 +126,12 @@ export default function requestquote() {
                 <Label
                   className='text-xl tracking-normal font-normal text-white'
                   htmlFor="comment"
-                  value="Your message"
+                  value="Your Message"
                 />
               </div>
               <Textarea
                 id="comment"
-                placeholder="Your Message Here!"
+                placeholder="Please also include your Phone Number in the message as well"
                 required
                 rows={4}
               />
