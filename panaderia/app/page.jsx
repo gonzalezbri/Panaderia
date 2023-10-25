@@ -1,6 +1,8 @@
 
 import Jumbotron from "./components/Jumbotron";
 import Slideshows from "./components/Slideshows";
+
+
 export default function Home() {
   return (
     

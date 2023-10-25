@@ -10,43 +10,17 @@ import { HiMail } from 'react-icons/hi';
 
 const jumbotronVariants = {
   initial: {
-      opacity: 0,
+    opacity: 0,
     y: 20,
   },
   animate: {
-      opacity: 1,
+    opacity: 1,
     y: 0,
-      transition: {
+    transition: {
       duration: 1,
       ease: 'easeInOut',
-      },
+    },
   },
-};
-
-const DesktopImage = () => {
-  return (
-    <Image
-      src={dti}
-      alt="Desktop Background Image"
-      layout="fill"
-      objectFit="cover"
-      objectPosition="center center"
-      priority
-    />
-  );
-};
-
-const MobileImage = () => {
-  return (
-    <Image
-      src={raq}
-      alt="Mobile Background Image"
-      layout="fill"
-      objectFit="cover"
-      objectPosition="center center"
-      priority 
-    />
-  );
 };
 
 const overlayStyles = {
@@ -67,7 +41,7 @@ const formStyles = {
   width: '100%', 
 };
 
-export default function requestquote() {
+const RequestQuote = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -102,7 +76,7 @@ export default function requestquote() {
           Request a Quote
         </h1>
         <p className="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
-        To request a quote for a custom cake, please follow the steps below. First, provide your email address in the designated box. Next, describe your desired custom cake, including any specific design, flavor, and size preferences in the text box provided. Once you have submitted the form, I will promptly review your request and get back to you with a personalized quote!
+          To request a quote for a custom cake, please follow the steps below. First, provide your email address in the designated box. Next, describe your desired custom cake, including any specific design, flavor, and size preferences in the text box provided. Once you have submitted the form, I will promptly review your request and get back to you with a personalized quote!
         </p>
         <div style={overlayStyles} className="max-w-md">
           <form className="flex flex-col gap-4" style={formStyles} action="">
@@ -143,3 +117,5 @@ export default function requestquote() {
     </motion.section>
   );
 };
+
+export default RequestQuote;
