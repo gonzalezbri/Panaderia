@@ -25,7 +25,7 @@ const DefaultNavbar = () => {
                 </Navbar.Brand>
             </motion.div>
             <Navbar.Toggle />
-            <Navbar.Collapse>
+            <Navbar.Collapse className="mr-5">
                 <Navbar.Link href="/" className="text-white text-xl">
                     <motion.div whileHover={{ scale: 1.2, color: 'black' }} style={linkStyle}>Home</motion.div>
                 </Navbar.Link>
@@ -34,9 +34,6 @@ const DefaultNavbar = () => {
                 </Navbar.Link>
                 <Navbar.Link href="/request-a-quote" className="text-white text-xl">
                     <motion.div whileHover={{ scale: 1.1, color: 'black' }} style={linkStyle}>Request a quote</motion.div>
-                </Navbar.Link>
-                <Navbar.Link href="/about" className="text-white text-xl">
-                    <motion.div whileHover={{ scale: 1.2, color: 'black' }} style={linkStyle}>About</motion.div>
                 </Navbar.Link>
             </Navbar.Collapse>
         </Navbar>

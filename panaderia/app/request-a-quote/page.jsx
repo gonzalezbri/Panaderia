@@ -107,7 +107,7 @@ const RequestQuote = () => {
                 id="comment"
                 placeholder="Please also include your Phone Number in the message as well"
                 required
-                rows={4}
+                rows={1}
               />
             </div>
             <Button color="gray" className="inline-flex justify-center items-center py-3 px-5 text-2xl font-medium text-center text-white rounded-lg bg-transparent border border-white hover:bg-white hover:text-black hover:border-white transform scale-105 hover:scale-100 transition duration-200 ease-in-out">Submit</Button>

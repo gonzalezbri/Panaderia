@@ -25,7 +25,7 @@ const jumbotronVariants = {
 const Jumbotron = () => {
     return (
         <motion.section
-        className="relative bg-gray-700 bg-blend-multiply"
+        className="relative bg-gray-700 bg-blend-multiply min-h-screen flex flex-col justify-center items-center"
         initial="initial" 
         animate="animate" 
         variants={jumbotronVariants}
