@@ -1,4 +1,4 @@
-import EditBreadForm from "../components/EditBreadForm";
+import EditBreadForm from "../../components/EditBreadForm";
 
 export default function EditBread() {
     return(

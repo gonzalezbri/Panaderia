@@ -1,8 +1,47 @@
 'use client';
 
 import { FileInput, Label } from 'flowbite-react';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+
 
 export default function addBread() {
+    const [title, setTitle] = useState("");
+    const [price,setPrice] = useState("");
+    const [description, setDescription] = useState("");
+    
+    const router = useRouter();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        if (!title || !description) {
+            alert("Title, Price and description are required.");
+            return;
+        }
+    
+        try {
+            const res = await fetch("http://localhost:3000/api/topics", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({ title,price,description, }),
+            });
+    
+            if (res.ok) {
+            router.push("/");
+            } else {
+            throw new Error("Failed to create Bread Item");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+        };
+    
+
+
     const overlayStyles = {
         backgroundColor: 'rgba(0, 0, 0, 0.3)',
         padding: '20px',
@@ -22,11 +61,11 @@ export default function addBread() {
     return(
         <div style={overlayStyles} className="max-w-md">
             <h1 className="font-bold text-white mt-10 mb-10">Add a Bread</h1>
-        <form className="flex flex-col gap-4" style={formStyles}>
-            <input className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Title" />
-            <input className="border border-slate-500 px-8 py-2" type="text" placeholder="Price Per Dozen" />
-            <input className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Description" />
-            <button className="bg-green-300 font-bold py-3 px-6">Add Bread!</button>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4" style={formStyles}>
+            <input onChange={(e) => setTitle(e.target.value)} value={title} className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Title" />
+            <input onChange={(e) => setPrice(e.target.value)} value={price}className="border border-slate-500 px-8 py-2" type="text" placeholder="Price Per Dozen" />
+            <input onChange={(e) => setDescription(e.target.value)} value={description}className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Description" />
+            <button type='submit' className="bg-green-300 font-bold py-3 px-6">Add Bread!</button>
             <div
                 className="max-w-md"
                 id="fileUpload">
