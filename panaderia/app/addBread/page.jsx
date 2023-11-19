@@ -22,7 +22,7 @@ export default function addBread() {
         }
     
         try {
-            const res = await fetch("http://localhost:3000/api/topics", {
+            const res = await fetch("http://localhost:3000/api/Bread", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",

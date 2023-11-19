@@ -11,13 +11,13 @@ export async function POST(request) {
 
 export async function GET() {
     await connectMongoDB();
-    const topics = await Bread.find();
-    return NextResponse.json({ topics });
+    const Breads = await Bread.find();
+    return NextResponse.json({ Breads });
 }
 
 export async function DELETE(request) {
     const id = request.nextUrl.searchParams.get("id");
     await connectMongoDB();
-    await Topic.findByIdAndDelete(id);
+    await Bread.findByIdAndDelete(id);
     return NextResponse.json({ message: "Bread Post deleted" }, { status: 200 });
 }
