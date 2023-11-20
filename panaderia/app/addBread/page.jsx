@@ -22,7 +22,7 @@ export default function addBread() {
         }
     
         try {
-            const res = await fetch("http://localhost:3000/api/Bread", {
+            const res = await fetch("http://localhost:3000/api/breads", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -31,7 +31,7 @@ export default function addBread() {
             });
     
             if (res.ok) {
-            router.push("/");
+            router.push("/dashboard");
             } else {
             throw new Error("Failed to create Bread Item");
             }
