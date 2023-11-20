@@ -58,7 +58,7 @@ const BreadList = () => {
             <RemoveBtn id={b._id} />
             <Link href={`/EditBread/${b._id}`} passHref>
               <button className="ml-2">
-                <HiPencilAlt size={24} />
+                <HiPencilAlt className='text-white' size={24} />
               </button>
             </Link>
           </div>
