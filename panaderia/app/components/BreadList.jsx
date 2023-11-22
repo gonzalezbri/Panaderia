@@ -11,7 +11,7 @@ const BreadList = () => {
   // Function to fetch breads data
   const fetchBreadsData = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/breads', {
+      const res = await fetch('/api/breads', {
         cache: 'no-store',
       });
   

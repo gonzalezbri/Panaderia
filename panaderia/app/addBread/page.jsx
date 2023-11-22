@@ -22,7 +22,7 @@ export default function AddBread() {
         }
     
         try {
-            const res = await fetch("http://localhost:3000/api/breads", {
+            const res = await fetch('/api/breads', {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
