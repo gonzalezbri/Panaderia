@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 
 
-export default function addBread() {
+export default function AddBread() {
     const [title, setTitle] = useState("");
     const [price,setPrice] = useState("");
     const [description, setDescription] = useState("");
