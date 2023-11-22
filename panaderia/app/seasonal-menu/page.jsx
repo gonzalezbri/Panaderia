@@ -1,103 +1,100 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import seas from './seas.jpg';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import Image from "next/image";
+import seas from "./seas.jpg";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
+const fetchBreadsData = async () => {
+    try {
+    const res = await fetch("/api/breads"); // Use the relative path to your API route
+    if (!res.ok) {
+        throw new Error("Failed to fetch menu list");
+    }
+    const data = await res.json();
+    console.log("Fetched data:", data);
+    return data.Breads || [];
+    } catch (error) {
+    console.error("Error fetching breads:", error);
+    return [];
+    }
+};
 
 export default function CardGrid() {
-    const cards = [
-        {
-            id: 1,
-            title: 'Bread 1',
-        },
-        {
-            id: 2,
-            title: 'Bread 2',
-        },
-        {
-            id: 3,
-            title: 'Bread 3',
-        },
-        {
-            id: 4,
-            title: 'Bread 4',
-        },
-        {
-            id: 5,
-            title: 'Bread 5',
-        },
-        {
-            id: 6,
-            title: 'Bread 6',
-        },
-        {
-            id: 7,
-            title: 'Bread 7',
-        },
-        {
-            id: 8,
-            title: 'Bread 8',
-        },
-        {
-            id: 9,
-            title: 'Bread 9',
-        },
-    ];
-
+    const [breads, setBreads] = useState([]);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 640);
-        };
-        handleResize(); // check initially
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
+    const handleResize = () => {
+        setIsMobile(window.innerWidth < 640);
+    };
+
+    handleResize(); // check initially
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+        window.removeEventListener("resize", handleResize);
+    };
+    }, []);
+
+    useEffect(() => {
+    const fetchData = async () => {
+        const breadsData = await fetchBreadsData();
+        setBreads(breadsData);
+    };
+
+    fetchData();
     }, []);
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-14">
-            <h1 className="text-4xl font-extrabold">Seasonal Menu</h1>
-
-            <div className="container mx-auto py-6">
-                <div className={`grid ${isMobile ? 'grid-cols-1' : 'grid-cols-3'} gap-4`}>
-                    <AnimatePresence>
-                        {cards.map((card) => (
-                            <motion.div
-                                key={card.id}
-                                className="card w-full bg-white rounded-lg overflow-hidden shadow-md"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                            >
-                                <div className="h-60 relative">
-                                    <Image
-                                        src={seas}
-                                        alt={card.title}
-                                        layout="fill"
-                                        objectFit="cover"
-                                    />
-                                </div>
-                                <div className="p-4">
-                                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        {card.title}
-                                    </h5>
-                                    <p className="font-normal text-gray-700 dark:text-gray-400">
-                                        Price Per Dozen:
-                                    </p>
-                                    <p className="font-normal text-gray-700 dark:text-gray-400">
-                                        Description:
-                                    </p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </AnimatePresence>
+    <main className="flex min-h-screen flex-col items-center justify-between p-14">
+        <h1 className="border-b-8 border-black shadow-xl mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
+        Seasonal Menu
+        </h1>
+        <div className="container mx-auto py-6">
+        <div
+            className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"} gap-4`}
+        >
+            <AnimatePresence>
+            {breads.map((bread) => (
+                <motion.div
+                key={bread._id}
+                className="card w-full bg-white rounded-lg overflow-hidden shadow-md"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                >
+                <div className="h-60 relative">
+                    <Image
+                    src={seas}
+                    alt={bread.title}
+                    layout="fill"
+                    objectFit="cover"
+                    />
                 </div>
-            </div>
-        </main>
+                <div className="p-4">
+                    <p className="font-bold text-gray-700 dark:text-gray-400 mb-2">
+                    <span className="text-xl text-blue-500">Title:</span>{" "}
+                    {bread.title}
+                    </p>
+                    <p className="font-bold text-gray-700 dark:text-gray-400 mb-2">
+                    <span className="text-xl text-green-500">
+                        Price per dozen:
+                    </span>{" "}
+                    ${bread.price}
+                    </p>
+                    <p className="font-bold text-gray-700 dark:text-gray-400">
+                    <span className="text-xl text-purple-500">
+                        Description:
+                    </span>{" "}
+                    {bread.description}
+                    </p>
+                </div>
+                </motion.div>
+            ))}
+            </AnimatePresence>
+        </div>
+        </div>
+    </main>
     );
 }
