@@ -18,7 +18,11 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  background-image: linear-gradient(to bottom, #7e2f22 0%, #502621 70%, #8d4034 100%);
+  background-size: cover;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .image {
@@ -26,16 +30,16 @@ body {
 }
 
 
-.gif-background {
+/*.gif-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: url(../public/breadbg.gif);
-  background-size: fill;
+  background-size: fill;}
   z-index: -1; /* Sets a lower z-index to position it behind other elements */
-}
+
 
 /* Navbar CSS*/
 .custom-navbar {
