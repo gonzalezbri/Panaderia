@@ -3,10 +3,14 @@ import { Navbar } from "flowbite-react";
 import { motion } from 'framer-motion';
 import NavImg from '../../public/bred75.png';
 import Image from "next/image";
+import { playfairDisplay } from '../fonts.js';
+
+
 
 const DefaultNavbar = () => {
     const linkStyle = {
-        color: 'white'
+        color: 'white',
+        className: playfairDisplay.className,
     };
     return (
         <Navbar

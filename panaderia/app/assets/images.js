@@ -36,7 +36,6 @@ import cake39 from "../../public/Bakery/cake39.jpg";
 import cake40 from "../../public/Bakery/cake40.jpg";
 import cake41 from "../../public/Bakery/cake41.jpg";
 import cake42 from "../../public/Bakery/cake42.jpg";
-import cake43 from "../../public/Bakery/cake43.jpg";
 import cake44 from "../../public/Bakery/cake44.jpg";
 import cake45 from "../../public/Bakery/cake45.jpg";
 import cake46 from "../../public/Bakery/cake46.jpg";
@@ -52,5 +51,5 @@ export default [
     cake14, cake15, cake16, cake17, cake18, cake19, cake20, cake21, cake22,
     cake23, cake24, cake25, cake26, cake27, cake28, cake29, cake30,
     cake31, cake32, cake33, cake34, cake35, cake36, cake37, cake38, cake39,
-    cake40, cake41, cake42, cake43, cake44, cake45, cake46, cake47, cake48,
+    cake40, cake41, cake42, cake44, cake45, cake46, cake47, cake48,
     cake49, cake50, cake51, cake52];
