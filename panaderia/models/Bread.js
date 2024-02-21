@@ -5,6 +5,7 @@ const breadSchema = new Schema(
         title: String,
         price: String,
         description: String,
+        imageUrl: String,
 
     },
     {

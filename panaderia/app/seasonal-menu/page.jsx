@@ -66,6 +66,7 @@ export default function CardGrid() {
                 >
                 <div className="h-60 relative">
                     <Image
+                    //bread.imageUrl
                     src={seas}
                     alt={bread.title}
                     layout="fill"

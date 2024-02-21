@@ -1,46 +1,64 @@
 'use client';
 
-import { FileInput, Label } from 'flowbite-react';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
+import { CldUploadButton } from 'next-cloudinary';
 
 
 export default function AddBread() {
     const [title, setTitle] = useState("");
-    const [price,setPrice] = useState("");
+    const [price,setPrice] = useState(""); 
     const [description, setDescription] = useState("");
-    
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [error, setError] = useState(null);
+
+
     const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+        
+        
         if (!title || !description) {
-            alert("Title, Price and description are required.");
+            alert("Title, Price, Description, and Image are required.");
             return;
         }
-    
+        setError(null); // Clear any previous errors
+        
+        if (!selectedImage) {
+            console.error("Image URL is not in the selectedImage");
+            return;
+            }
+
+
         try {
+            const formData = new FormData(); // Creates a FormData object
+            formData.append("title", title);
+            formData.append("price", price);
+            formData.append("description", description);
+            if (selectedImage) {
+                console.log("Selected Image:", selectedImage); // Check if selectedImage has a value
+                formData.append("imageUrl", selectedImage);
+                } else {
+                console.error("Image URL is missing. Aborting submission.");
+                return; // Prevent sending incomplete data
+                }
+            
             const res = await fetch('/api/breads', {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({ title,price,description, }),
+                method: "POST",
+                body: formData,
             });
     
             if (res.ok) {
-            router.push("/dashboard");
+                router.push("/dashboard");
             } else {
-            throw new Error("Failed to create Bread Item");
+                throw new Error("Failed to create Bread Item");
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
+            setError("Failed to create Bread Item: " + error.message);
         }
-        };
-    
-
+    };
 
     const overlayStyles = {
         backgroundColor: 'rgba(0, 0, 0, 0.3)',
@@ -58,27 +76,37 @@ export default function AddBread() {
     const formStyles = {
         width: '100%', 
     };
+    
+    
+
     return(
         <div style={overlayStyles} className="max-w-md">
-            <h1 className="font-bold text-white mt-10 mb-10">Add a Bread</h1>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4" style={formStyles}>
-            <input onChange={(e) => setTitle(e.target.value)} value={title} className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Title" />
-            <input onChange={(e) => setPrice(e.target.value)} value={price}className="border border-slate-500 px-8 py-2" type="text" placeholder="Price Per Dozen" />
-            <input onChange={(e) => setDescription(e.target.value)} value={description}className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Description" />
-            <button type='submit' className="bg-green-300 font-bold py-3 px-6">Add Bread!</button>
-            <div
-                className="max-w-md"
-                id="fileUpload">
-                    <div className="mb-2 block">
-                    <Label
-                    className='text-white'
-                    htmlFor="file"
-                    value="Upload file"/>
-                    </div>
-                <FileInput
-                id="file"/>
-            </div>
-        </form>
+            <h1 className="font-bold text-white mt-10 mb-10">Add a Menu Item</h1>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6" style={formStyles}>
+                <input onChange={(e) => setTitle(e.target.value)} value={title} className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Title" />
+                <input onChange={(e) => setPrice(e.target.value)} value={price} className="border border-slate-500 px-8 py-2" type="text" placeholder="Price Per Dozen" />
+                <input onChange={(e) => setDescription(e.target.value)} value={description} className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Description" />
+                <CldUploadButton
+                        className="bg-blue-500 font-bold py-3 px-6"
+                        cloudName={process.env.CLOUDINARY_CLOUD_NAME}
+                        apiKey={process.env.CLOUDINARY_API_KEY}
+                        apiSecret={process.env.CLOUDINARY_API_SECRET}
+                        uploadPreset="x4bjaqd2"
+                        placeHolder="upload image"
+                        onSuccess={(uploadedImage) => {
+                            console.log("Image uploaded successfully:", uploadedImage.info.public_id); 
+                            setSelectedImage(uploadedImage.info.public_id);
+                            }}
+                            onError={(error) => {
+                            console.error("Error uploading image:", error);
+                            setError("Image upload failed: " + error.message);
+                            }}
+                            onUploadProgress={(progress) => {
+                            console.log("Upload progress:", progress);
+                            }}>Upload Image First</CldUploadButton>
+
+                    <button type='submit' className="bg-green-300 font-bold py-3 px-6">Confirm Menu Item</button>
+            </form>
         </div>
-    )
+    );
 }

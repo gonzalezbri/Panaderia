@@ -18,7 +18,7 @@
 }
 
 body {
-  background-image: linear-gradient(to bottom, #7e2f22 0%, #502621 70%, #8d4034 100%);
+  background-image: linear-gradient(to bottom, #1f0d0d 0%, #502621 70%, #8d4034 100%);
   background-size: cover;
   min-height: 100vh;
   margin: 0;

@@ -52,6 +52,7 @@ const BreadList = () => {
               <h2 className="text-white font-bold text-2xl mb-2">Title:  {b.title}</h2>
               <div className="text-white mb-2">Price:  {b.price}</div>
               <div className="text-white mb-2">Description:  {b.description}</div>
+              <div className="text-white mb-2">Image URL: {b.imageUrl}</div>
             </div>
           </div>
           <div className="flex items-center">
