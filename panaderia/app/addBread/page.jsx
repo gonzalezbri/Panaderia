@@ -32,25 +32,20 @@ export default function AddBread() {
 
 
         try {
-            const formData = new FormData(); // Creates a FormData object
-            formData.append("title", title);
-            formData.append("price", price);
-            formData.append("description", description);
-            if (selectedImage) {
-                console.log("Selected Image:", selectedImage); // Check if selectedImage has a value
-                formData.append("imageUrl", selectedImage);
-                } else {
-                console.error("Image URL is missing. Aborting submission.");
-                return; // Prevent sending incomplete data
-                }
+            const data = { title, price, description, imageUrl: selectedImage, };
             
             const res = await fetch('/api/breads', {
                 method: "POST",
-                body: formData,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+                
             });
     
             if (res.ok) {
                 router.push("/dashboard");
+                console.log(data)
             } else {
                 throw new Error("Failed to create Bread Item");
             }
@@ -104,7 +99,7 @@ export default function AddBread() {
                             onUploadProgress={(progress) => {
                             console.log("Upload progress:", progress);
                             }}>Upload Image First</CldUploadButton>
-
+                            
                     <button type='submit' className="bg-green-300 font-bold py-3 px-6">Confirm Menu Item</button>
             </form>
         </div>
