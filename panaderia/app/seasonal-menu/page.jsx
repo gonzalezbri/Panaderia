@@ -1,9 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import seas from "./seas.jpg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { CldImage } from "next-cloudinary";
+
+
+
 
 const fetchBreadsData = async () => {
     try {
@@ -65,12 +67,12 @@ export default function CardGrid() {
                 exit={{ opacity: 0, y: -20 }}
                 >
                 <div className="h-60 relative">
-                    <Image
+                    <CldImage
                     //bread.imageUrl
-                    src={seas}
+                    src={bread.imageUrl}
                     alt={bread.title}
-                    layout="fill"
-                    objectFit="cover"
+                    height={200}
+                    width={400}
                     />
                 </div>
                 <div className="p-4">
