@@ -83,9 +83,6 @@ export default function AddBread() {
                 <input onChange={(e) => setDescription(e.target.value)} value={description} className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Description" />
                 <CldUploadButton
                         className="bg-blue-500 font-bold py-3 px-6"
-                        cloudName={process.env.CLOUDINARY_CLOUD_NAME}
-                        apiKey={process.env.CLOUDINARY_API_KEY}
-                        apiSecret={process.env.CLOUDINARY_API_SECRET}
                         uploadPreset="x4bjaqd2"
                         placeHolder="upload image"
                         onSuccess={(uploadedImage) => {
@@ -99,7 +96,7 @@ export default function AddBread() {
                             onUploadProgress={(progress) => {
                             console.log("Upload progress:", progress);
                             }}>Upload Image First</CldUploadButton>
-                            
+
                     <button type='submit' className="bg-green-300 font-bold py-3 px-6">Confirm Menu Item</button>
             </form>
         </div>
