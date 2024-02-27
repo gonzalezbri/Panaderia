@@ -50,7 +50,7 @@ export default function CardGrid() {
 
     return (
     <main className="flex min-h-screen flex-col items-center justify-between p-14">
-        <h1 className="border-b-8 border-black shadow-xl mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
+        <h1 className="shadow-xl mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
         Seasonal Menu
         </h1>
         <div className="container mx-auto py-6">
@@ -61,14 +61,13 @@ export default function CardGrid() {
             {breads.map((bread) => (
                 <motion.div
                 key={bread._id}
-                className="card w-full bg-white rounded-lg overflow-hidden shadow-md"
+                className="card w-full bg-opacity-50 bg-black rounded-lg overflow-hidden shadow-md"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 >
                 <div className="h-60 relative">
-                    <CldImage
-                    //bread.imageUrl
+                    <CldImage  
                     src={bread.imageUrl}
                     alt={bread.title}
                     height={200}
