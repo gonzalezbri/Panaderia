@@ -49,7 +49,7 @@ export default function CardGrid() {
     }, []);
 
     return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-14">
+    <div className="flex min-h-screen flex-col items-center justify-between p-14">
         <h1 className="shadow-xl mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
         Seasonal Menu
         </h1>
@@ -61,34 +61,31 @@ export default function CardGrid() {
             {breads.map((bread) => (
                 <motion.div
                 key={bread._id}
-                className="card w-full bg-opacity-50 bg-black rounded-lg overflow-hidden shadow-md"
+                className="card w-full bg-opacity-50 bg-black rounded-l rounded-r overflow-hidden shadow-md"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 >
-                <div className="h-60 relative">
+                <div className="image-container">
+                    <div>
                     <CldImage  
                     src={bread.imageUrl}
                     alt={bread.title}
-                    height={200}
+                    height={400}
                     width={400}
-                    />
+                    /></div>
                 </div>
                 <div className="p-4">
-                    <p className="font-bold text-gray-700 dark:text-gray-400 mb-2">
-                    <span className="text-xl text-blue-500">Title:</span>{" "}
+                    <p className="text-2xl font-bold text-gray-300 mb-2">
+                    {" "}
                     {bread.title}
                     </p>
-                    <p className="font-bold text-gray-700 dark:text-gray-400 mb-2">
-                    <span className="text-xl text-green-500">
-                        Price per dozen:
-                    </span>{" "}
+                    <p className="text-l font-bold text-green-400 mb-2">
+                    {" "}
                     ${bread.price}
                     </p>
-                    <p className="font-bold text-gray-700 dark:text-gray-400">
-                    <span className="text-xl text-purple-500">
-                        Description:
-                    </span>{" "}
+                    <p className="font-bold text-gray-400">
+                    {" "}
                     {bread.description}
                     </p>
                 </div>
@@ -97,6 +94,6 @@ export default function CardGrid() {
             </AnimatePresence>
         </div>
         </div>
-    </main>
+    </div>
     );
 }

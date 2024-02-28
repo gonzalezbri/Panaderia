@@ -79,7 +79,7 @@ export default function AddBread() {
             <h1 className="font-bold text-white mt-10 mb-10">Add a Menu Item</h1>
             <form onSubmit={handleSubmit} className="flex flex-col gap-6" style={formStyles}>
                 <input onChange={(e) => setTitle(e.target.value)} value={title} className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Title" />
-                <input onChange={(e) => setPrice(e.target.value)} value={price} className="border border-slate-500 px-8 py-2" type="text" placeholder="Price Per Dozen" />
+                <input onChange={(e) => setPrice(e.target.value)} value={price} className="border border-slate-500 px-8 py-2" type="text" placeholder="Price Per" />
                 <input onChange={(e) => setDescription(e.target.value)} value={description} className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Description" />
                 <CldUploadButton
                         className="bg-blue-500 font-bold py-3 px-6"

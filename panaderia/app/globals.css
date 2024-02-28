@@ -29,7 +29,20 @@ body {
   object-fit: cover;
 }
 
+.card-image {
+  width: 300px; /* Adjust width as needed */
+}
 
+/* Media queries for different screen sizes */
+@media (max-width: 768px) {
+  .card-image.responsive {
+    width: 200px; /* Change width for smaller screens */
+  }
+}
+  
+.image-container{
+  object-fit: fill;
+}
 
 
 /*.gif-background {
