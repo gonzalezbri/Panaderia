@@ -30,7 +30,11 @@ body {
 }
 
 .card-image {
-  width: 300px; /* Adjust width as needed */
+  height: 450px;
+}
+
+.card {
+  height: 600px; /* Adjust width as needed */
 }
 
 /* Media queries for different screen sizes */

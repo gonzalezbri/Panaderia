@@ -53,7 +53,7 @@ export default function CardGrid() {
         <h1 className="shadow-xl mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
         Seasonal Menu
         </h1>
-        <div className="container mx-auto py-6">
+        <div className="container mx-auto py-12">
         <div
             className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"} gap-4`}
         >
@@ -68,6 +68,7 @@ export default function CardGrid() {
                 >
                 <div>
                     <CldImage  
+                    className="card-image"
                     src={bread.imageUrl}
                     alt={bread.title}
                     height={1}
