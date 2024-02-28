@@ -66,14 +66,13 @@ export default function CardGrid() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 >
-                <div className="image-container">
-                    <div>
+                <div>
                     <CldImage  
                     src={bread.imageUrl}
                     alt={bread.title}
-                    height={400}
-                    width={400}
-                    /></div>
+                    height={1}
+                    width={500}
+                    />
                 </div>
                 <div className="p-4">
                     <p className="text-2xl font-bold text-gray-300 mb-2">
