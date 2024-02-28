@@ -30,19 +30,18 @@ body {
 }
 
 .card-image {
-  height: 450px;
+  object-fit: cover;
+  height: 500px;
 }
-
+.gap-4{
+  gap: 3rem;
+}
 .card {
-  height: 600px; /* Adjust width as needed */
+  height: 635px; /* Adjust width as needed */
 }
 
 /* Media queries for different screen sizes */
-@media (max-width: 768px) {
-  .card-image.responsive {
-    width: 200px; /* Change width for smaller screens */
-  }
-}
+
   
 .image-container{
   object-fit: fill;
