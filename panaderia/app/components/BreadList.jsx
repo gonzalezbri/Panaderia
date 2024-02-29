@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { HiPencilAlt } from 'react-icons/hi';
 import Link from 'next/link';
 import RemoveBtn from './RemoveBtn';
 
@@ -45,23 +44,18 @@ const BreadList = () => {
         <div
           key={b._id}
           style={bgStyles}
-          className="p-4 border border-slate-500 my-3 flex justify-between items-center"
+          className="p-2 border border-slate-500 my-6 flex justify-between items-center"
         >
           <div className="w-3/4 p-8">
             <div className="flex flex-col items-start">
               <h2 className="text-white font-bold text-2xl mb-2">Title:  {b.title}</h2>
               <div className="text-white mb-2">Price:  {b.price}</div>
               <div className="text-white mb-2">Description:  {b.description}</div>
-              <div className="text-white mb-2">Image URL: {b.imageUrl}</div>
+              <div className="text-white mb-2 mr-8">Image URL: {b.imageUrl}</div>
             </div>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center mx-8">
             <RemoveBtn id={b._id} />
-            <Link href={`/EditBread/${b._id}`} passHref>
-              <button className="ml-2">
-                <HiPencilAlt className='text-white' size={24} />
-              </button>
-            </Link>
           </div>
         </div>
       ))}

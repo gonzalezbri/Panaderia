@@ -24,7 +24,7 @@ const DefaultNavbar = () => {
                     src={NavImg}
                     className="mr-5 h-12 image"/>
                     <span className="self-center whitespace-nowrap text-3xl font-semibold text-white">
-                        Panaderia
+                        Pan Casero
                     </span>
                 </Navbar.Brand>
             </motion.div>

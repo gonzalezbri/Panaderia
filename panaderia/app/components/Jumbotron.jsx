@@ -41,7 +41,7 @@ const Jumbotron = () => {
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <div className="px-4 mx-auto relative text-center py-24 lg:py-56">
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
-            Panadería
+            Pan Casero
         </h1>
         <p className="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
         Una empresa local operada con cariño por Olga González y su esposo, Roberto González, en Rawlins, Wyoming. ¡Haz clic en el botón a continuación para explorar nuestro menú de temporada actual y descubrir qué se está horneando!

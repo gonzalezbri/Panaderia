@@ -76,13 +76,13 @@ export default function AddBread() {
 
     return(
         <div style={overlayStyles} className="max-w-md">
-            <h1 className="font-bold text-white mt-10 mb-10">Add a Menu Item</h1>
+            <h1 className="font-bold text-4xl text-white mt-10 mb-10">Add a Menu Item</h1>
             <form onSubmit={handleSubmit} className="flex flex-col gap-6" style={formStyles}>
                 <input onChange={(e) => setTitle(e.target.value)} value={title} className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Title" />
                 <input onChange={(e) => setPrice(e.target.value)} value={price} className="border border-slate-500 px-8 py-2" type="text" placeholder="Price Per" />
                 <input onChange={(e) => setDescription(e.target.value)} value={description} className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Description" />
                 <CldUploadButton
-                        className="bg-blue-500 font-bold py-3 px-6"
+                        className="rounded-2xl hover:bg-blue-200 bg-blue-500 font-bold py-3 px-6"
                         uploadPreset="x4bjaqd2"
                         placeHolder="upload image"
                         onSuccess={(uploadedImage) => {
@@ -97,7 +97,7 @@ export default function AddBread() {
                             console.log("Upload progress:", progress);
                             }}>Upload Image First</CldUploadButton>
 
-                    <button type='submit' className="bg-green-300 font-bold py-3 px-6">Confirm Menu Item</button>
+                    <button type='submit' className="hover:bg-green-200 rounded-2xl bg-green-400 font-bold py-3 px-6">Confirm Menu Item</button>
             </form>
         </div>
     );
