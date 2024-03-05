@@ -58,8 +58,8 @@ const RequestQuote = () => {
   return (
     <motion.section
       className="relative bg-gray-700 bg-blend-multiply h-screen flex items-center"
-      initial="initial" 
-      animate="animate" 
+      initial="initial"
+      animate="animate"
       variants={jumbotronVariants}
     >
       <Image
@@ -70,15 +70,15 @@ const RequestQuote = () => {
         objectPosition="center center"
         priority
       />
-      <div className="absolute inset-0 bg-black opacity-60"></div>
-      <div className="px-4 mx-auto relative text-center py-24 lg:py-56">
+      <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
+      <div className="px-4 relative text-center py-24 lg:py-40 z-1" style={{ margin: '0 auto', maxHeight: '900px' }}>
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
           Request a Quote
         </h1>
         <p className="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
           To request a quote for a custom cake, please follow the steps below. First, provide your email address in the designated box. Next, describe your desired custom cake, including any specific design, flavor, and size preferences in the text box provided. Once you have submitted the form, I will promptly review your request and get back to you with a personalized quote!
         </p>
-        <div style={overlayStyles} className="max-w-md">
+        <div style={overlayStyles}>
           <form className="flex flex-col gap-4" style={formStyles} action="">
             <div className="mb-2 block">
               <Label
@@ -107,7 +107,7 @@ const RequestQuote = () => {
                 id="comment"
                 placeholder="Please also include your Phone Number in the message as well"
                 required
-                rows={1}
+                rows={2}
               />
             </div>
             <Button color="gray" className="inline-flex justify-center items-center py-3 px-5 text-2xl font-medium text-center text-white rounded-lg bg-transparent border border-white hover:bg-white hover:text-black hover:border-white transform scale-105 hover:scale-100 transition duration-200 ease-in-out">Submit</Button>
