@@ -3,7 +3,7 @@ import DashNav from "../components/DashNav";
 
 export default function dashboard() {
     return (
-        <main className="p-24">
+        <main className="px-8">
         <DashNav/>
         <BreadList/>
         </main>

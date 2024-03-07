@@ -75,7 +75,7 @@ export default function CardGrid() {
                     width={500}
                     />
                 </div>
-                <div className="p-4">
+                <div className="p-4 py-2">
                     <p className="text-2xl font-bold text-gray-300 mb-2">
                     {" "}
                     {bread.title}
