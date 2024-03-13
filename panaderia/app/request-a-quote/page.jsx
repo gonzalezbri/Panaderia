@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Label, TextInput,Textarea, Button } from 'flowbite-react';
-import { HiMail } from 'react-icons/hi';
+import { HiMail, HiUser } from 'react-icons/hi';
 
 const jumbotronVariants = {
   initial: {
@@ -43,6 +43,9 @@ const formStyles = {
 
 const RequestQuote = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,6 +57,7 @@ const RequestQuote = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  
 
   return (
     <motion.section
@@ -71,7 +75,7 @@ const RequestQuote = () => {
         priority
       />
       <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
-      <div className="px-4 relative text-center py-24 lg:py-40 z-1" style={{ margin: '0 auto', maxHeight: '900px' }}>
+      <div className="px-4 relative text-center py-20 lg:py-34 z-1" style={{ margin: '0 auto', maxHeight: '900px' }}>
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
           Request a Quote
         </h1>
@@ -79,26 +83,45 @@ const RequestQuote = () => {
           To request a quote for a custom cake, please follow the steps below. First, provide your email address in the designated box. Next, describe your desired custom cake, including any specific design, flavor, and size preferences in the text box provided. Once you have submitted the form, I will promptly review your request and get back to you with a personalized quote!
         </p>
         <div style={overlayStyles}>
-          <form className="flex flex-col gap-4" style={formStyles} action="">
-            <div className="mb-2 block">
+          <form className="flex flex-col gap-2" style={formStyles} action="">
+          <div className="mb-4 block">
               <Label
-                className='text-xl tracking-normal font-normal text-white'
+                className='text-xl tracking-normal font-semibold text-white'
+                htmlFor="Name"
+                value="Full Name"
+              />
+            </div>
+            <TextInput
+              icon={HiUser}
+              id="name"
+              placeholder="                       Your Full Name"
+              required
+              rightIcon={HiUser}
+              type="name"
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+            />
+            <div className="mb-4 block">
+              <Label
+                className='text-xl tracking-normal font-semibold text-white'
                 htmlFor="email4"
                 value="Your Email"
               />
             </div>
             <TextInput
               icon={HiMail}
-              id="email4"
-              placeholder="Your Email Here"
+              id="email"
+              placeholder="                      Your Email Here"
               required
               rightIcon={HiMail}
               type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
             />
             <div className="max-w-md" id="textarea">
-              <div className="mb-2 block">
+              <div className="mb-4 block">
                 <Label
-                  className='text-xl tracking-normal font-normal text-white'
+                  className='text-xl tracking-normal font-semibold text-white'
                   htmlFor="comment"
                   value="Your Message"
                 />
@@ -108,6 +131,9 @@ const RequestQuote = () => {
                 placeholder="Please also include your Phone Number in the message as well"
                 required
                 rows={2}
+                onChange={(e) => setMessage(e.target.value)}
+                value={message}
+                className='mb-6'
               />
             </div>
             <Button color="gray" className="inline-flex justify-center items-center py-3 px-5 text-2xl font-medium text-center text-white rounded-lg bg-transparent border border-white hover:bg-white hover:text-black hover:border-white transform scale-105 hover:scale-100 transition duration-200 ease-in-out">Submit</Button>
