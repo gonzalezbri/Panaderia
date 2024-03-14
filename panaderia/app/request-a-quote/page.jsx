@@ -43,9 +43,48 @@ const formStyles = {
 
 const RequestQuote = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [name, setName] = useState('')
+  const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [error, setError] = useState([]);
+  const [success, setSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log('Name:', setFullName);
+    console.log('Email:', setEmail);
+    console.log('Message:', setMessage);
+
+    const res = await fetch('api/quote', {
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        fullName,
+        email,
+        message,
+
+      }),
+      });
+      const { msg, success } = await res.json();
+      setError(msg);
+      setSuccess(success);
+
+      if (success) {
+        setSuccessMessage('Your quote submission was successful!');
+        setFullName("");
+        setEmail("");
+        setMessage("");
+    } else {
+        setSuccessMessage('There was an error submitting you request.')
+    }
+  };
+
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -82,12 +121,18 @@ const RequestQuote = () => {
         <p className="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
           To request a quote for a custom cake, please follow the steps below. First, provide your email address in the designated box. Next, describe your desired custom cake, including any specific design, flavor, and size preferences in the text box provided. Once you have submitted the form, I will promptly review your request and get back to you with a personalized quote!
         </p>
+        {/* Success/Error Message Display */}
+        {successMessage && (
+          <div className={`mb-4 text-white text-lg font-semibold ${success ? 'bg-green-500' : 'bg-red-500'} px-4 py-2 rounded-md`}>
+            {successMessage}
+          </div>
+        )}
         <div style={overlayStyles}>
-          <form className="flex flex-col gap-2" style={formStyles} action="">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-2" style={formStyles} action="">
           <div className="mb-4 block">
               <Label
                 className='text-xl tracking-normal font-semibold text-white'
-                htmlFor="Name"
+                htmlFor="Full Name"
                 value="Full Name"
               />
             </div>
@@ -98,8 +143,8 @@ const RequestQuote = () => {
               required
               rightIcon={HiUser}
               type="name"
-              onChange={(e) => setName(e.target.value)}
-              value={name}
+              onChange={(e) => setFullName(e.target.value)}
+              value={fullName}
             />
             <div className="mb-4 block">
               <Label
@@ -136,7 +181,7 @@ const RequestQuote = () => {
                 className='mb-6'
               />
             </div>
-            <Button color="gray" className="inline-flex justify-center items-center py-3 px-5 text-2xl font-medium text-center text-white rounded-lg bg-transparent border border-white hover:bg-white hover:text-black hover:border-white transform scale-105 hover:scale-100 transition duration-200 ease-in-out">Submit</Button>
+            <Button type='submit' color="gray" className="inline-flex justify-center items-center py-3 px-5 text-2xl font-medium text-center text-white rounded-lg bg-transparent border border-white hover:bg-white hover:text-black hover:border-white transform scale-105 hover:scale-100 transition duration-200 ease-in-out">Submit</Button>
           </form>
         </div>
       </div>
