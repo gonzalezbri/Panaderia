@@ -11,6 +11,7 @@ export default function AddBread() {
     const [description, setDescription] = useState("");
     const [selectedImage, setSelectedImage] = useState(null);
     const [error, setError] = useState(null);
+    const [successMessage, setSuccessMessage] = useState('');
 
 
     const router = useRouter();
@@ -46,6 +47,7 @@ export default function AddBread() {
             if (res.ok) {
                 router.push("/dashboard");
                 console.log(data)
+                setSuccessMessage('Menu item added successfully!');
             } else {
                 throw new Error("Failed to create Bread Item");
             }
@@ -77,6 +79,8 @@ export default function AddBread() {
     return(
         <div style={overlayStyles} className="max-w-md">
             <h1 className="font-bold text-4xl text-white mt-10 mb-10">Add a Menu Item</h1>
+            {error && <div className="mb-4 text-white text-lg font-semibold bg-red-500 px-4 py-2 rounded-md">{error}</div>}
+            {successMessage && <div className="mb-4 text-white text-lg font-semibold bg-green-500 px-4 py-2 rounded-md">{successMessage}</div>}
             <form onSubmit={handleSubmit} className="flex flex-col gap-6" style={formStyles}>
                 <input onChange={(e) => setTitle(e.target.value)} value={title} className="border border-slate-500 px-8 py-2" type="text" placeholder="Bread Title" />
                 <input onChange={(e) => setPrice(e.target.value)} value={price} className="border border-slate-500 px-8 py-2" type="text" placeholder="Price Per" />
