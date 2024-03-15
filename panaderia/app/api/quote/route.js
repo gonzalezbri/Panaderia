@@ -4,11 +4,11 @@ import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
 export async function POST(req){
-    const {fullName, email, message, } = await req.json();
+    const {fullName, email, message } = await req.json();
 
     try {
         await connectMongoDB();
-        await Quote.create({fullName, email, message,})
+        await Quote.create({fullName, email, message})
 
         return NextResponse.json({msg: ["Quote Sent Successfully!"], success: true})
         } catch (error) {
@@ -22,5 +22,16 @@ export async function POST(req){
             } else {
             return NextResponse.json({ msg: ["Unable to send Quote."] });
             }
+        }
+    }
+
+    export async function GET() {
+        try {
+            await connectMongoDB();
+            const quotes = await Quote.find();
+            return NextResponse.json({ Quotes: quotes });
+        } catch (error) {
+            console.error("Error fetching quotes:", error);
+            return NextResponse.json({ msg: ["Failed to fetch quotes"] }, { status: 500 });
         }
     }

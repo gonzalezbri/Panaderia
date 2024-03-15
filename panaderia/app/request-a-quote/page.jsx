@@ -114,7 +114,7 @@ const RequestQuote = () => {
         priority
       />
       <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
-      <div className="px-4 relative text-center py-20 lg:py-34 z-1" style={{ margin: '0 auto', maxHeight: '900px' }}>
+      <div className="px-4 relative text-center py-20 lg:py-34 z-1" style={{ margin: '0 auto', maxHeight: '800px' }}>
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
           Request a Quote
         </h1>
