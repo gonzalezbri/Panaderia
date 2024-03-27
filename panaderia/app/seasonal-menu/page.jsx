@@ -59,7 +59,7 @@ export default function CardGrid() {
                         {breads.map((bread) => (
                             <motion.div
                                 key={bread._id}
-                                className="card w-full bg-opacity-50 bg-black rounded-l rounded-r overflow-hidden shadow-md"
+                                className="menu card w-full bg-opacity-50 bg-black rounded-l rounded-r overflow-hidden shadow-md"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
