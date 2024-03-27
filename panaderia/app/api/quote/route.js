@@ -35,3 +35,10 @@ export async function POST(req){
             return NextResponse.json({ msg: ["Failed to fetch quotes"] }, { status: 500 });
         }
     }
+
+    export async function DELETE(request) {
+        const id = request.nextUrl.searchParams.get("id");
+        await connectMongoDB();
+        await Quote.findByIdAndDelete(id);
+        return NextResponse.json({ message: "Quote Post deleted" }, { status: 200 });
+    }
