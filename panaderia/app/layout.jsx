@@ -1,6 +1,8 @@
 import './globals.css';
 import { inter } from './fonts';
 import Navbar from './components/Navbar';
+import { AuthProvider } from './components/Providers';
+
 
 const InterFont = inter;
 
@@ -13,8 +15,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={InterFont.className}> {/* Apply the font class directly */}
+        <AuthProvider>
         <Navbar />
-        {children}
+        {children}</AuthProvider>
       </body>
     </html>
   );

@@ -1,11 +1,21 @@
 'use client';
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { CldUploadButton } from 'next-cloudinary';
+import { useSession } from "next-auth/react";
 
 
-export default function AddBread() {
+
+const AddBread = () => {
+    const { session } = useSession({
+        required:true,
+        onUnauthenticated(){
+            redirect('/login?callbackUrl=/addBread')
+        }
+    })
+
+
     const [title, setTitle] = useState("");
     const [price,setPrice] = useState(""); 
     const [description, setDescription] = useState("");
@@ -106,3 +116,4 @@ export default function AddBread() {
         </div>
     );
 }
+export default AddBread
