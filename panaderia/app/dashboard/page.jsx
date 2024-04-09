@@ -8,7 +8,7 @@ const ServerProtectedPage = async () =>{
     const session = await getServerSession(authOptions)
 
     if(!session) {
-        redirect('/login?callbackUrl=/dashboard')
+        redirect('/Login?callbackUrl=/dashboard')
     }
 
     return(

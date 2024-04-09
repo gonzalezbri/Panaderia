@@ -62,7 +62,7 @@ const DefaultNavbar = () => {
                     </motion.div>
                 </Navbar.Link>
                 ) : (
-                <Navbar.Link href="/login" className="text-white text-xl">
+                <Navbar.Link href="/Login" className="text-white text-xl">
                     <motion.div whileHover={{ scale: 1.1, color: 'pink' }} style={linkStyle}>
                     Login
                     </motion.div>

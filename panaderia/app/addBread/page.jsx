@@ -11,7 +11,7 @@ const AddBread = () => {
     const { session } = useSession({
         required:true,
         onUnauthenticated(){
-            redirect('/login?callbackUrl=/addBread')
+            redirect('/Login?callbackUrl=/addBread')
         }
     })
 
